@@ -1,15 +1,15 @@
 import tensorflow as tf
 import numpy as np
+#parte 1
+dados_x = np.random.randn(4,8)
+dados_w = np.random.randn(8,2)
 
-dados_x = np.randon(4,8)
-dados_w = np.randon(8,2)
+b = tf.random_normal((4,2),0,1)
 
-b = tf.randon_normal((4,2),0,1)
+x = tf.placeholder(tf.float32,shape=(4,8))
+w = tf.placeholder(tf.float32,shape=(8,2))
 
-x = tf.placeholder(tf.float32,shape=(4,8)
-w = tf.placeholder(tf.float32,shape=(8,2)
-
-operacao = tf.matmult(x,w) + b
+operacao = tf.matmul(x,w) + b
 maximo = tf.reduce_max(operacao)
 
 with tf.Session() as sess:
@@ -17,28 +17,30 @@ with tf.Session() as sess:
 	saida2 = sess.run(maximo, feed_dict={x:dados_x,w:dados_w})
 print(saida2)
 
-x1 = tf.placeholder(tf.float32,shape=(4,8)
-w1 = tf.placeholder(tf.float32,shape=(8,2)
-x2 = tf.placeholder(tf.float32,shape=(4,8)
-w2 = tf.placeholder(tf.float32,shape=(8,2)
-x3 = tf.placeholder(tf.float32,shape=(4,8)
-w3 = tf.placeholder(tf.float32,shape=(8,2)
-x4 = tf.placeholder(tf.float32,shape=(4,8)
-w4 = tf.placeholder(tf.float32,shape=(8,2)
-x5 = tf.placeholder(tf.float32,shape=(4,8)
-w5 = tf.placeholder(tf.float32,shape=(8,2)
+#parte 2
+x1 = np.random.randn(4,8)
+w1 = np.random.randn(8,2)
+x2 = np.random.randn(4,8)
+w2 = np.random.randn(8,2)
+x3 = np.random.randn(10,3)
+w3 = np.random.randn(3,1)
+x4 = np.random.randn(4,8)
+w4 = np.random.randn(8,2)
+x5 = np.random.randn(4,8)
+w5 = np.random.randn(8,2)
 
 lista_x = [x1,x2,x3,x4,x5]
 lista_w = [w1,w2,w3,w4,w5]
 lista_saida = []
 
-x0 = tf.placeholder(tf.float32,shape=(None,None)
-w0 = tf.placeholder(tf.float32,shape=(None,None)
+c = tf.random_normal((4,2),0,1)
+x0 = tf.placeholder(tf.float32,shape=(None,None))
+w0 = tf.placeholder(tf.float32,shape=(None,None))
 
-operacao1 = tf.matmult(x0,w0) + c
+operacao1 = tf.matmul(x0,w0) + c
 maximo1 = tf.reduce_max(operacao1)
 
-with tf.Session as sess1:
+with tf.Session() as sess1:
 	for i in range(5):
 		saida = sess1.run(maximo,feed_dict = {x0:lista_x[i],w0:lista_w[i]})
 		lista_saida.append(saida)
