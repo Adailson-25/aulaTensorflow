@@ -7,7 +7,7 @@ frase = tf.constant('ola mundo')
 with tf.Session() as sess:
 	rodar = sess.run(frase)
 print(rodar)
-print(tf..Session().run(frase))
+print(tf.Session().run(frase))
 
 
 a = tf.constant(5)
@@ -65,13 +65,19 @@ print(tf.Session().run(tA))
 
 var1 = tf.Variable(2)
 init = tf.global_variables_initializer()
-print(tf.Session().run(var1))
+with tf.Session() as sess3:
+    sess3.run(init)
+    rodar = sess3.run(var1)
+print(rodar)
 
 matriz = tf.random.normal((3,5),0,1)
 var2 = tf.Variable(matriz)
+init = tf.global_variables_initializer()
+with tf.Session() as sess4:
+    sess4.run(init)
+    rodar = sess4.run(var2)
+print(rodar)
 
-print(matriz)
-print(var2)
 
 
 
